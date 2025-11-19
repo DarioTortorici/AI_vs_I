@@ -106,10 +106,10 @@ streamlit run streamlit_app.py
 ai_vs_i/
 ├── src/
 │   └── ai_vs_i/
-│       ├── application/      # Chat
-│       ├── domain/           # Agent logic, prompts, tools, memory
-│       └──  infrastructure/   # API, database, monitoring, TMDb client
-├── tests/                    # Tests
+│       ├── application/      # Game logic
+│       ├── domain/           # Agent logic, prompts, memory
+│       └── infrastructure/   # Monitoring
+├── static/                   # Pictures and styles 
 ├── streamlit_app.py          # Streamlit web app
 ├── pyproject.toml            # Project metadata
 └── README.md                 # Project documentation
