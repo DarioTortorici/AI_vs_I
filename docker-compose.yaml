@@ -1,0 +1,19 @@
+services:
+  agent-api:
+    container_name: AI_vs_I
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    networks:
+      - AI_vs_I-network
+
+volumes:
+  data:
+
+networks:
+  AI_vs_I-network:
+    name: AI_vs_I-network

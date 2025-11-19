@@ -1,0 +1,65 @@
+/*
+Custom CSS for WhatsApp-like UI used in streamlit_app.py
+*/
+
+.chat-message {
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    max-width: 80%;
+    word-wrap: break-word;
+}
+.human-message {
+    color: black;
+    background-color: #DCF8C6;
+    margin-left: auto;
+    text-align: right;
+}
+.ai-message {
+    color: black;
+    background-color: #FFFFFF;
+    margin-right: auto;
+    text-align: left;
+    border: 1px solid #E0E0E0;
+}
+.message-header {
+    color: black;
+    font-weight: bold;
+    font-size: 0.9em;
+    margin-bottom: 3px;
+}
+.message-time {
+    font-size: 0.7em;
+    color: #999;
+    margin-top: 3px;
+}
+.phase-indicator {
+    color: black;
+    text-align: center;
+    padding: 10px;
+    background-color: #FFF4E6;
+    border-radius: 5px;
+    margin: 10px 0;
+    font-weight: bold;
+}
+.stButton>button {
+    width: 100%;
+}
+#chat-container {
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+}
+#chat-container::-webkit-scrollbar {
+    width: 8px;
+}
+#chat-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+#chat-container::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+#chat-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
