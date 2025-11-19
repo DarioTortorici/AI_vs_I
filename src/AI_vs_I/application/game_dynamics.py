@@ -42,7 +42,11 @@ class ParticipantState:
         self.guess = None
 
     def __str__(self):
-        return f"ParticipantState(color={self.color}, is_human={self.is_human}, has_asked={self.has_asked}, has_answered={self.has_answered}, guess={self.guess})"
+        return (
+            f"ParticipantState(color={self.color}, "
+            f"is_human={self.is_human}, "
+            f"has_asked={self.has_asked}, has_answered={self.has_answered}, guess={self.guess})"
+        )
 
 
 class GameDynamics:
@@ -235,7 +239,6 @@ class GameDynamics:
         # Check if all guesses are complete
         if self._are_all_guesses_complete():
             self.phase = GamePhase.FINISHED
-            
 
     def get_available_targets(self, curr_asker: str) -> list[str]:
         """

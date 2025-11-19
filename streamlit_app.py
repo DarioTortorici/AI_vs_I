@@ -44,7 +44,6 @@ with open("static/style.css") as f:
     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
 
-
 def initialize_game():
     """Initialize the game state."""
     if "game" not in st.session_state:
@@ -62,9 +61,7 @@ def initialize_game():
         # Initialize model selections with default model for each AI color
         if "model_selections" not in st.session_state:
             st.session_state.model_selections = {
-                color: "llama-3.1-8b-instant"
-                for color in PARTICIPANT_COLORS
-                if color != HUMAN_COLOR
+                color: "llama-3.1-8b-instant" for color in PARTICIPANT_COLORS if color != HUMAN_COLOR
             }
 
 
@@ -119,13 +116,13 @@ def display_chat_messages():
                 messages_html += (
                     f'<div class="chat-message {message_class}">'
                     f'<div class="message-header">{emoji} Mr. {msg["sender"]}</div>'
-                    f'<div>{msg["content"]}</div>'
+                    f"<div>{msg['content']}</div>"
                     f'<div class="message-time">{msg["timestamp"]}</div>'
-                    '</div>'
+                    "</div>"
                 )
 
         # Close scrollable container
-        messages_html += '</div>'
+        messages_html += "</div>"
         st.markdown(messages_html, unsafe_allow_html=True)
 
 
@@ -165,6 +162,7 @@ def handle_ai_answer_turn():
             st.session_state.answer_order.append(current_turn)
         st.rerun()
 
+
 def handle_ai_asking_turn():
     """Handle AI participant asking a question."""
     game = st.session_state.game
@@ -200,6 +198,7 @@ def handle_ai_asking_turn():
                 game.record_question(current_turn, target, question)
                 add_chat_message(current_turn, question, "question")
                 st.rerun()
+
 
 def start_game():
     """Start the game."""
@@ -300,7 +299,7 @@ def main():
                         f"{emoji} Mr. {color}",
                         options=AVAILABLE_GROQ_MODELS,
                         index=AVAILABLE_GROQ_MODELS.index(st.session_state.model_selections[color]),
-                        key=f"model_select_{color}"
+                        key=f"model_select_{color}",
                     )
                     st.session_state.model_selections[color] = selected_model
 
@@ -480,7 +479,7 @@ def main():
                         # Extract the color from the response using regex
                         # Expected format: "I think Mr. [Color] is the human because..."
                         guess = color  # Default to self if extraction fails
-                        match = re.search(r'I think Mr\.\s+(\w+)\s+is the human', response, re.IGNORECASE)
+                        match = re.search(r"I think Mr\.\s+(\w+)\s+is the human", response, re.IGNORECASE)
                         if match:
                             extracted_color = match.group(1)
                             # Validate that the extracted color is a valid participant
@@ -509,15 +508,13 @@ def main():
                 most_voted = [color for color, count in vote_counts.items() if count == max_votes]
 
                 # Human wins if they are NOT the most voted
-                human_won = results['human_color'] not in most_voted
+                human_won = results["human_color"] not in most_voted
 
                 st.subheader("🏆 Final Verdict")
                 if human_won:
-                    st.success(
-                        f"✅ **HUMAN WINS!** Mr. {results['human_color']} successfully blended in with the AIs!"
-                    )
+                    st.success(f"✅ **HUMAN WINS!** Mr. {results['human_color']} successfully blended in with the AIs!")
                 else:
-                    human_votes = vote_counts.get(results['human_color'], 0)
+                    human_votes = vote_counts.get(results["human_color"], 0)
                     st.error(
                         f"❌ **HUMAN LOSES!** Mr. {results['human_color']} was identified as the human "
                         f"(received {human_votes} vote(s))"
@@ -531,7 +528,7 @@ def main():
                 for color in PARTICIPANT_COLORS:
                     votes = vote_counts.get(color, 0)
                     emoji = COLOR_EMOJIS[color]
-                    is_human = color == results['human_color']
+                    is_human = color == results["human_color"]
                     human_tag = " 👤 (HUMAN)" if is_human else ""
                     st.write(f"{emoji} Mr. {color}{human_tag}: **{votes} vote(s)**")
 
