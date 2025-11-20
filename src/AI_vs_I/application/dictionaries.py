@@ -13,7 +13,7 @@ COLOR_EMOJIS = {
 
 # Available Groq models that can be used as agents
 AVAILABLE_GROQ_MODELS = [
-    "llama-3.1-8b-instant",
+    "llama-3.3-8b-instant",
     "llama-3.1-70b-versatile",
     "qwen/qwen3-32b",
     "moonshotai/kimi-k2-instruct-0905",
